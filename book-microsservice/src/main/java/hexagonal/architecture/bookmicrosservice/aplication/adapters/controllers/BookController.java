@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("v1/book")
@@ -31,5 +32,10 @@ public class BookController {
     @GetMapping("/consult/{number}")
     Optional<BookDto> getByNumber(@PathVariable Integer number){
         return bookServicePort.getByNumber(number);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    void deleteById(@PathVariable UUID id){
+        bookServicePort.delete(id);
     }
 }
