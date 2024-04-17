@@ -1,8 +1,8 @@
-package hexagonal.architecture.bookmicrosservice.infrastructure.adapters.repositories;
+package hexagonal.architecture.bookmicrosservice.adapters.repositories;
 
+import hexagonal.architecture.bookmicrosservice.adapters.entities.BookEntity;
 import hexagonal.architecture.bookmicrosservice.domain.Book;
 import hexagonal.architecture.bookmicrosservice.domain.ports.repositories.BookRepositoryPort;
-import hexagonal.architecture.bookmicrosservice.infrastructure.adapters.entities.BookEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;
 

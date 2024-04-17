@@ -1,4 +1,4 @@
-package hexagonal.architecture.bookmicrosservice.aplication.adapters.controllers;
+package hexagonal.architecture.bookmicrosservice.adapters;
 
 import hexagonal.architecture.bookmicrosservice.domain.Book;
 import hexagonal.architecture.bookmicrosservice.domain.dtos.BookDto;

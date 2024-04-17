@@ -1,4 +1,4 @@
-package hexagonal.architecture.bookmicrosservice.infrastructure.configuration;
+package hexagonal.architecture.bookmicrosservice.adapters.configuration;
 
 import hexagonal.architecture.bookmicrosservice.domain.adapters.servicesImp.BookServiceImpl;
 import hexagonal.architecture.bookmicrosservice.domain.ports.services.BookServicePort;

@@ -1,6 +1,6 @@
-package hexagonal.architecture.bookmicrosservice.infrastructure.adapters.repositories;
+package hexagonal.architecture.bookmicrosservice.adapters.repositories;
 
-import hexagonal.architecture.bookmicrosservice.infrastructure.adapters.entities.BookEntity;
+import hexagonal.architecture.bookmicrosservice.adapters.entities.BookEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

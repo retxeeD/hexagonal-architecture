@@ -1,4 +1,4 @@
-package hexagonal.architecture.bookmicrosservice.infrastructure.adapters.entities;
+package hexagonal.architecture.bookmicrosservice.adapters.entities;
 
 import hexagonal.architecture.bookmicrosservice.domain.Book;
 import jakarta.persistence.*;
