@@ -3,19 +3,21 @@ package controller
 import (
 	"POCL/application/domain"
 	"POCL/application/port/input"
+	"fmt"
 )
 
-type transactionController struct {
+type transactionControllerBoleto struct {
 	transactionUseCase input.TransactionUseCase
 }
 
-func NewTransactionController(
+func NewTransactionControllerBoleto(
 	transactionUseCase input.TransactionUseCase,
-) *transactionController {
-	return &transactionController{transactionUseCase: transactionUseCase}
+) *transactionControllerBoleto {
+	return &transactionControllerBoleto{transactionUseCase: transactionUseCase}
 }
 
-func (tc *transactionController) Transacionar(valorEmConta float32, valorTransferido float32) float32 {
+func (tc *transactionControllerBoleto) TransacionarBoleto(valorEmConta float32, valorTransferido float32) float32 {
+	fmt.Println("Transacionar boleto")
 	transactionReqDomain := domain.TransactionReqDomain{
 		ValorEmConta:     valorEmConta,
 		ValorTransferido: valorTransferido,

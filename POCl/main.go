@@ -11,7 +11,10 @@ func main() {
 	fmt.Println("start hexagonal test")
 	transactionPort := output.NewTransactionPix()
 	transactionService := service.NewtransactionService(transactionPort)
-	controller := controller.NewTransactionController(transactionService)
+	controllerPix := controller.NewTransactionControllerPix(transactionService)
+	controllerBoleto := controller.NewTransactionControllerBoleto(transactionService)
 
-	fmt.Println(controller.Transacionar(950.00, 50.00))
+	fmt.Println(controllerPix.TransacionarPix(950.00, 50.00))
+	fmt.Println(controllerBoleto.TransacionarBoleto(100.00, 50.00))
+
 }
