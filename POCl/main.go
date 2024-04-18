@@ -2,7 +2,7 @@ package main
 
 import (
 	"POCL/adapter/input/controller"
-	"POCL/application/port/output"
+	"POCL/adapter/output"
 	"POCL/application/service"
 	"fmt"
 )
