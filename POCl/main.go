@@ -1,15 +1,17 @@
 package main
 
 import (
+	"POCL/adapter/input/controller"
+	"POCL/application/port/output"
+	"POCL/application/service"
 	"fmt"
-	"pocl/adapters"
-	"pocl/core/port"
 )
 
 func main() {
-	fmt.Println("Start program.")
-	var tp port.TransactionPort
-	fmt.Println(tp)
-	fmt.Println(adapters.FazerTransacaoBoleto(100.0, tp))
-	fmt.Println(adapters.FazerTransacaoPix(100.0, tp))
+	fmt.Println("start hexagonal test")
+	transactionPort := output.NewTransactionPix()
+	transactionService := service.NewtransactionService(transactionPort)
+	controller := controller.NewTransactionController(transactionService)
+
+	fmt.Println(controller.Transacionar(950.00, 50.00))
 }
