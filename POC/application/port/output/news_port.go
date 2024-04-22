@@ -6,5 +6,5 @@ import (
 )
 
 type NewsPort interface {
-	GetNewsPort(domain.NewsReqDomain) (*domain.NewsDomain, *(rest_err.RestErr))
+	GetNewsPort(domain.NewsReqDomain) (*domain.NewsDomain, *rest_err.RestErr)
 }
