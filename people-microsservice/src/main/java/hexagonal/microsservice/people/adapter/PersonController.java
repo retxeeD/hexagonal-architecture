@@ -5,6 +5,8 @@ import hexagonal.microsservice.people.domain.dto.PersonDto;
 import hexagonal.microsservice.people.domain.dto.RentBookDto;
 import hexagonal.microsservice.people.domain.exceptions.RentBookException;
 import hexagonal.microsservice.people.domain.ports.services.PersonServicePort;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
