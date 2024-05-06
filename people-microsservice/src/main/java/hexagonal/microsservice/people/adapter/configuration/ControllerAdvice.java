@@ -7,6 +7,7 @@ import hexagonal.microsservice.people.domain.exceptions.RentBookException;
 import hexagonal.microsservice.people.domain.ports.logger.PersonLogger;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -28,6 +29,7 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class ControllerAdvice {
 
+    @Autowired
     private PersonLogger logger;
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

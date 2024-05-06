@@ -1,12 +1,11 @@
 package hexagonal.microsservice.people.adapter;
 
 import hexagonal.microsservice.people.domain.dto.PersonDomain;
-import hexagonal.microsservice.people.domain.dto.PersonDto;
-import hexagonal.microsservice.people.domain.dto.RentBookDto;
+import hexagonal.microsservice.people.adapter.dtos.PersonDto;
+import hexagonal.microsservice.people.adapter.dtos.RentBookDto;
 import hexagonal.microsservice.people.domain.exceptions.RentBookException;
 import hexagonal.microsservice.people.domain.ports.services.PersonServicePort;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -21,19 +20,19 @@ public class PersonController {
         this.service = service;
     }
 
-    @PostMapping("/")
-    PersonDto register(@RequestBody PersonDto personDto){
+    @PostMapping("/register")
+    PersonDto register(@RequestBody @Valid PersonDto personDto){
         return service.register(personDto).PersonToPersonDto();
     }
 
     @PatchMapping("/rent-book")
-    PersonDto rentBook(@RequestBody RentBookDto rentBookDto) throws RentBookException {
+    PersonDto rentBook(@RequestBody @Valid RentBookDto rentBookDto) throws RentBookException {
         return service.rentBook(rentBookDto)
                 .map(PersonDomain::PersonToPersonDto).get();
     }
 
     @PatchMapping("/return-book")
-    PersonDto returnBook(@RequestBody RentBookDto rentBookDto) throws RentBookException {
+    PersonDto returnBook(@RequestBody @Valid RentBookDto rentBookDto) throws RentBookException {
         return service.returnBook(rentBookDto)
                 .map(PersonDomain::PersonToPersonDto).get();
     }

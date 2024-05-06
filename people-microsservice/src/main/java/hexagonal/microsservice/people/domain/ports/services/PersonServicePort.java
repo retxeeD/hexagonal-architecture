@@ -1,8 +1,8 @@
 package hexagonal.microsservice.people.domain.ports.services;
 
 import hexagonal.microsservice.people.domain.dto.PersonDomain;
-import hexagonal.microsservice.people.domain.dto.PersonDto;
-import hexagonal.microsservice.people.domain.dto.RentBookDto;
+import hexagonal.microsservice.people.adapter.dtos.PersonDto;
+import hexagonal.microsservice.people.adapter.dtos.RentBookDto;
 import hexagonal.microsservice.people.domain.exceptions.RentBookException;
 
 import java.util.Optional;

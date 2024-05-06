@@ -1,5 +1,7 @@
 package hexagonal.microsservice.people.domain.dto;
 
+import hexagonal.microsservice.people.adapter.dtos.PersonDto;
+
 import java.util.UUID;
 
 public class PersonDomain {
