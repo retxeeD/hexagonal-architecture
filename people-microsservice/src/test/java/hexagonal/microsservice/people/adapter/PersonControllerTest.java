@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -38,12 +39,17 @@ public class PersonControllerTest {
     @Test
     void validHandleValidationErrorRegisterDocumentInvalidValue() throws Exception {
         PersonDto request = new PersonDto("ABC", "Teste teste", 1);
-        ResponseEntity<Object> apiErrors = new ResponseEntity<>("O campo 'document' deve ser informado com valor válido.]", HttpStatus.BAD_REQUEST);
+        List<String> messages = new ArrayList<>();
+        messages.add("O campo 'document' deve ser informado com valor válido.");
+        ResponseEntity<Object> apiErrors = new ResponseEntity<>(messages, HttpStatus.BAD_REQUEST);
         this.mockMvc.perform(MockMvcRequestBuilders.post("/v1/person/register")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(this.objectMapper.writeValueAsBytes(request)))
+                        .content(objectMapper.writeValueAsBytes(request)))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
+                /**.andExpect(result -> {
+                    String json = result.getResponse().getContentAsString();
+                })**/
                 .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
     }
 
