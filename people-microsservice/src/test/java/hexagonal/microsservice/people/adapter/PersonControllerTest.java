@@ -47,10 +47,7 @@ public class PersonControllerTest {
                         .content(objectMapper.writeValueAsBytes(request)))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                /**.andExpect(result -> {
-                    String json = result.getResponse().getContentAsString();
-                })**/
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
