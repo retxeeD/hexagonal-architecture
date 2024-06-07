@@ -1,7 +1,7 @@
 package hexagonal.microsservice.people.domain;
 
 import feign.FeignException;
-import hexagonal.microsservice.people.domain.client.RemoteServiceClient;
+import hexagonal.microsservice.people.adapter.client.RemoteServiceClient;
 import hexagonal.microsservice.people.domain.dto.PersonDomain;
 import hexagonal.microsservice.people.adapter.dtos.PersonDto;
 import hexagonal.microsservice.people.adapter.dtos.RentBookDto;

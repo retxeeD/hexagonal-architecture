@@ -1,4 +1,4 @@
-package hexagonal.microsservice.people.adapter;
+package hexagonal.microsservice.people.adapter.controllers;
 
 import hexagonal.microsservice.people.domain.dto.PersonDomain;
 import hexagonal.microsservice.people.adapter.dtos.PersonDto;
@@ -38,8 +38,8 @@ public class PersonController {
     }
 
     @GetMapping("/consult/{document}")
-    PersonDto findByDocument(@PathVariable String document){
-        return service.findByDocument(document).map(PersonDomain::PersonToPersonDto).get();
+    PersonDto findByDocument(@PathVariable Integer document){
+        return service.findByDocument(document.toString()).map(PersonDomain::PersonToPersonDto).get();
     }
 
     @DeleteMapping("/delete/{id}")

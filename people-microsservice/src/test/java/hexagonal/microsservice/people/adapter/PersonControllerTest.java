@@ -1,6 +1,7 @@
 package hexagonal.microsservice.people.adapter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import hexagonal.microsservice.people.adapter.controllers.PersonController;
 import hexagonal.microsservice.people.adapter.dtos.PersonDto;
 import hexagonal.microsservice.people.adapter.dtos.RentBookDto;
 import hexagonal.microsservice.people.domain.ports.logger.PersonLogger;
@@ -17,7 +18,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -39,8 +39,7 @@ public class PersonControllerTest {
     @Test
     void validHandleValidationErrorRegisterDocumentInvalidValue() throws Exception {
         PersonDto request = new PersonDto("ABC", "Teste teste", 1);
-        List<String> messages = new ArrayList<>();
-        messages.add("O campo 'document' deve ser informado com valor válido.");
+        List<String> messages = List.of("O campo 'document' deve ser informado com valor válido.");
         ResponseEntity<Object> apiErrors = new ResponseEntity<>(messages, HttpStatus.BAD_REQUEST);
         this.mockMvc.perform(MockMvcRequestBuilders.post("/v1/person/register")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -53,25 +52,27 @@ public class PersonControllerTest {
     @Test
     void validHandleValidationErrorRegisterDocumentNullValue() throws Exception {
         PersonDto request = new PersonDto(null, "Teste teste",1);
-        ResponseEntity<Object> apiErrors = new ResponseEntity<>("O campo 'document' é obrigatório.", HttpStatus.BAD_REQUEST);
+        List<String> messages = List.of("O campo 'document' é obrigatório.");
+        ResponseEntity<Object> apiErrors = new ResponseEntity<>(messages, HttpStatus.BAD_REQUEST);
         this.mockMvc.perform(MockMvcRequestBuilders.post("/v1/person/register")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsBytes(request)))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
     void validHandleValidationErrorRegisterWithoutDocument() throws Exception {
         String request = "{\"name\": \"Teste teste\", \"rentBook\": 1}";
-        ResponseEntity<Object> apiErrors = new ResponseEntity<>("O campo 'document' é obrigatório.", HttpStatus.BAD_REQUEST);
+        List<String> messages = List.of("O campo 'document' é obrigatório.");
+        ResponseEntity<Object> apiErrors = new ResponseEntity<>(messages, HttpStatus.BAD_REQUEST);
         this.mockMvc.perform(MockMvcRequestBuilders.post("/v1/person/register")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(request))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
@@ -84,83 +85,82 @@ public class PersonControllerTest {
                         .content(request))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
     void validHandleValidationErrorRegisterNameBlankValue() throws Exception {
-        String request = "{\"document\": \"42166595863\",\"name\": \"     \"}";
-        ResponseEntity<Object> apiErrors = new ResponseEntity<>("O campo 'name' é obrigatório.", HttpStatus.BAD_REQUEST);
+        String request = "{\"document\": \"42166595863\",\"name\": \"     \", \"rentBook\": 1}";
+        List<String> messages = List.of("O campo 'name' é obrigatório.");
+        ResponseEntity<Object> apiErrors = new ResponseEntity<>(messages, HttpStatus.BAD_REQUEST);
         mockMvc.perform(MockMvcRequestBuilders.post("/v1/person/register")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(request))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
     void validHandleValidationErrorRegisterNameNullValue() throws Exception {
         String request = "{\"document\": \"42166595863\", \"rentBook\": 1,\"name\": null}";
-        ResponseEntity<Object> apiErrors = new ResponseEntity<>("O campo 'name' é obrigatório.", HttpStatus.BAD_REQUEST);
+        List<String> messages = List.of("O campo 'name' é obrigatório.");
+        ResponseEntity<Object> apiErrors = new ResponseEntity<>(messages, HttpStatus.BAD_REQUEST);
         mockMvc.perform(MockMvcRequestBuilders.post("/v1/person/register")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(request))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
     void validHandleValidationErrorRegisterWithoutName() throws Exception {
-        String request = "{\"document\": \"42166595863\", \"rentBook\": 1,}";
-        ResponseEntity<Object> apiErrors = new ResponseEntity<>("O campo 'name' é obrigatório.", HttpStatus.BAD_REQUEST);
+        String request = "{\"document\": \"42166595863\", \"rentBook\": 1}";
+        List<String> messages = List.of("O campo 'name' é obrigatório.");
+        ResponseEntity<Object> apiErrors = new ResponseEntity<>(messages, HttpStatus.BAD_REQUEST);
         mockMvc.perform(MockMvcRequestBuilders.post("/v1/person/register")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(request))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     /** /consult/{personDocument} **/
 
     @Test
     void validHandleValidationErrorPathParamPersonDocumentInvalidValue() throws Exception {
-        ResponseEntity<Object> apiErrors = new ResponseEntity<>("Informe documento válido.", HttpStatus.BAD_REQUEST);
         mockMvc.perform(MockMvcRequestBuilders.get("/v1/person/consult/ABC"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().string("{\"message\": \"O parametro 'document' aceita somente dados do tipo Integer.\"}"));
     }
 
     @Test
     void validHandleValidationErrorPathParamPersonDocumentBlankValue() throws Exception {
-        ResponseEntity<Object> apiErrors = new ResponseEntity<>("Informe documento válido.", HttpStatus.BAD_REQUEST);
         mockMvc.perform(MockMvcRequestBuilders.get("/v1/person/consult/     "))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().string("{\"message\": \"O parametro 'document' é obrigatório na rota.\"}"));
     }
 
     /** /delete/{id} **/
 
     @Test
     void validHandleValidationErrorPathParamIdInvalidValue() throws Exception {
-        ResponseEntity<Object> apiErrors = new ResponseEntity<>("O parametro 'id' aceita somente dados do tipo UUID.", HttpStatus.BAD_REQUEST);
         mockMvc.perform(MockMvcRequestBuilders.delete("/v1/person/delete/ABC"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().string("{\"message\": \"O parametro 'id' aceita somente dados do tipo UUID.\"}"));
     }
 
     @Test
     void validHandleValidationErrorPathParamIdBlankValue() throws Exception {
-        ResponseEntity<Object> apiErrors = new ResponseEntity<>("O parametro 'id' é obrigatório na rota.", HttpStatus.BAD_REQUEST);
         mockMvc.perform(MockMvcRequestBuilders.delete("/v1/person/delete/      "))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().string("{\"message\": \"O parametro 'id' é obrigatório na rota.\"}"));
     }
 
     /** /rent-book **/
@@ -174,7 +174,7 @@ public class PersonControllerTest {
                         .content(objectMapper.writeValueAsBytes(request)))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
@@ -186,7 +186,7 @@ public class PersonControllerTest {
                         .content(objectMapper.writeValueAsBytes(request)))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
@@ -198,7 +198,7 @@ public class PersonControllerTest {
                         .content(request))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
@@ -211,7 +211,7 @@ public class PersonControllerTest {
                         .content(request))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
@@ -223,7 +223,7 @@ public class PersonControllerTest {
                         .content(request))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
@@ -236,7 +236,7 @@ public class PersonControllerTest {
                         .content(objectMapper.writeValueAsBytes(request)))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
@@ -248,7 +248,7 @@ public class PersonControllerTest {
                         .content(request))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     /** /return-book **/
@@ -262,7 +262,7 @@ public class PersonControllerTest {
                         .content(objectMapper.writeValueAsBytes(request)))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
@@ -274,7 +274,7 @@ public class PersonControllerTest {
                         .content(objectMapper.writeValueAsBytes(request)))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
@@ -286,7 +286,7 @@ public class PersonControllerTest {
                         .content(request))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
@@ -299,7 +299,7 @@ public class PersonControllerTest {
                         .content(request))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
@@ -311,7 +311,7 @@ public class PersonControllerTest {
                         .content(request))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
@@ -324,7 +324,7 @@ public class PersonControllerTest {
                         .content(objectMapper.writeValueAsBytes(request)))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 
     @Test
@@ -336,6 +336,6 @@ public class PersonControllerTest {
                         .content(request))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors)));
+                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(apiErrors.getBody())));
     }
 }

@@ -1,4 +1,4 @@
-package hexagonal.microsservice.people.adapter.configuration;
+package hexagonal.microsservice.people.adapter.controllers;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
@@ -57,7 +57,7 @@ public class ControllerAdvice {
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public ResponseEntity<Object> duplicateBookNumberError(HttpServletRequest request){
         logger.error(buildErrorLog(request));
-        return new ResponseEntity<>("O campo 'documento' da pessoa não pode ser duplicado na base de dados, insira outro valor.", HttpStatus.UNPROCESSABLE_ENTITY);
+        return new ResponseEntity<>("{\"message\": \"O campo 'documento' da pessoa não pode ser duplicado na base de dados, insira outro valor.\"}", HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
@@ -72,9 +72,9 @@ public class ControllerAdvice {
                     .orElse(null);
             String[] fieldDataType = ((InvalidFormatException) jsonMappingException).getTargetType().getName().split("\\.");
 
-            return new ResponseEntity<>("O campo '"+ fieldName +"' aceita somente dados do tipo "+ fieldDataType[fieldDataType.length -1] +".", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("{\"message\": \"O campo '"+ fieldName +"' aceita somente dados do tipo "+ fieldDataType[fieldDataType.length -1] +".\"}", HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>("Revise a documentação, há campos sendo enviados com tipo incorreto.", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("{\"message\": \"Revise a documentação, há campos sendo enviados com tipo incorreto.\"}", HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(EntityNotFoundException.class)
@@ -89,14 +89,14 @@ public class ControllerAdvice {
     public ResponseEntity<Object> typeMismatchError(MethodArgumentTypeMismatchException ex, HttpServletRequest request){
         logger.error(buildErrorLog(request));
         String[] paramType = ex.getRequiredType().toString().split("\\.");
-        return new ResponseEntity<>("O parametro '"+ ex.getName() +"' aceita somente dados do tipo "+ paramType[paramType.length -1] +".", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("{\"message\": \"O parametro '"+ ex.getName() +"' aceita somente dados do tipo "+ paramType[paramType.length -1] +".\"}", HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(MissingPathVariableException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<Object> missingPathVariable(MissingPathVariableException ex, HttpServletRequest request){
         logger.error(buildErrorLog(request));
-        return new ResponseEntity<>("O parametro '"+ ex.getVariableName() +"' é obrigatório na rota.", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("{\"message\": \"O parametro '"+ ex.getVariableName() +"' é obrigatório na rota.\"}", HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(NotFoundException.class)
@@ -114,7 +114,7 @@ public class ControllerAdvice {
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
     public ResponseEntity<Object> invalidContentType(HttpServletRequest request){
         logger.error(buildErrorLog(request));
-        return new ResponseEntity<>("O header 'Content-Type' recebe apenas o valor  'application/json'", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("{\"message\": \"O header 'Content-Type' recebe apenas o valor  'application/json'.\"}", HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(RuntimeException.class)
@@ -126,7 +126,7 @@ public class ControllerAdvice {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> genericError(HttpServletRequest request){
         logger.error(buildErrorLog(request));
-        return new ResponseEntity<>("Ocorreu um erro inesperado, estamos trabalhando para resolver.", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("{\"message\": \"Ocorreu um erro inesperado, estamos trabalhando para resolver.\"}", HttpStatus.BAD_REQUEST);
     }
 
     Map<String, Object> buildErrorLog(HttpServletRequest request){

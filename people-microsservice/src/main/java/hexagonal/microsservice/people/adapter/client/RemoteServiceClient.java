@@ -1,4 +1,4 @@
-package hexagonal.microsservice.people.domain.client;
+package hexagonal.microsservice.people.adapter.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
