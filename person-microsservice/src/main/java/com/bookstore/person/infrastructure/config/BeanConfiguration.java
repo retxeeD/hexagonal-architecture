@@ -18,8 +18,8 @@ public class BeanConfiguration {
         return new PersonServiceImpl(repository);
     }
 
-    @Bean
+/**    @Bean
     PersonControllerPort personController(RentBookUseCase rentBookUseCase, ReturnBookUseCase returnBookUseCase, PersonServiceImpl personService){
         return new PersonController(rentBookUseCase, returnBookUseCase, personService);
-    }
+    }**/
 }

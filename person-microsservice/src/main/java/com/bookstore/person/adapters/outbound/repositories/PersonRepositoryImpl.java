@@ -18,35 +18,29 @@ public class PersonRepositoryImpl implements PersonRepository {
         this.repository = repositoryPort;
     }
 
-    @Override
     public PersonDomain register(PersonDomain personDomain) {
         PersonEntity person = new PersonEntity(personDomain.getDocument(),personDomain.getName(), personDomain.getRentBook());
         return repository.save(person).toPersonDomain();
     }
 
-    @Override
     public Optional<PersonDomain> rentBook(String personDoc, Integer bookNumber) {
         repository.rentBook(personDoc, bookNumber);
         return repository.findByPersonDoc(personDoc).map(PersonEntity::toPersonDomain);
     }
 
-    @Override
     public Optional<PersonDomain> returnBook(String personDoc, Integer bookNumber) {
         repository.rentBook(personDoc, bookNumber);
         return repository.findByPersonDoc(personDoc).map(PersonEntity::toPersonDomain);
     }
 
-    @Override
     public Optional<PersonDomain> findByDocument(String document) {
         return repository.findByPersonDoc(document).map(PersonEntity::toPersonDomain);
     }
 
-    @Override
     public Optional<PersonDomain> findById(UUID id) {
         return repository.findById(id).map(PersonEntity::toPersonDomain);
     }
 
-    @Override
     public void delete(UUID id) {
         repository.deleteById(id);
     }
