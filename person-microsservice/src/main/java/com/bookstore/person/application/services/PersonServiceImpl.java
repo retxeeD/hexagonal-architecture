@@ -4,9 +4,10 @@ import com.bookstore.person.application.dto.PersonDto;
 import com.bookstore.person.application.dto.RentBookDto;
 import com.bookstore.person.core.domain.repositories.PersonRepository;
 import com.bookstore.person.core.domain.services.PersonServiceDomain;
+import org.springframework.stereotype.Component;
 
 import java.util.UUID;
-
+@Component
 public class PersonServiceImpl implements PersonServiceDomain {
 
     private final PersonRepository repository;

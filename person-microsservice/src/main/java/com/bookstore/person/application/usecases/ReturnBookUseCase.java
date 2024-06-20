@@ -4,7 +4,9 @@ import com.bookstore.person.application.dto.PersonDto;
 import com.bookstore.person.application.dto.RentBookDto;
 import com.bookstore.person.core.domain.entities.PersonDomain;
 import com.bookstore.person.core.domain.repositories.PersonRepository;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ReturnBookUseCase {
 
     private final PersonRepository repository;
