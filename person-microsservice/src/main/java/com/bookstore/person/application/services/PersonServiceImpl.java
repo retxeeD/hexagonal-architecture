@@ -17,26 +17,26 @@ public class PersonServiceImpl implements PersonServiceDomain {
     }
 
     public PersonDto register(PersonDto person) {
-        return null;
+        return new PersonDto(repository.register(person.toDomain()));
     }
 
     public PersonDto rentBook(RentBookDto rentBookDto) {
-        return null;
+        return new PersonDto(repository.rentBook(rentBookDto.getPersonDoc(), rentBookDto.getRentBook()).get());
     }
 
     public PersonDto returnBook(RentBookDto rentBookDto) {
-        return null;
+        return new PersonDto(repository.returnBook(rentBookDto.getPersonDoc(), rentBookDto.getRentBook()).get());
     }
 
     public PersonDto findByDocument(String document) {
-        return null;
+        return new PersonDto(repository.findByDocument(document).get());
     }
 
     public PersonDto findById(UUID id) {
-        return null;
+        return new PersonDto(repository.findById(id).get());
     }
 
-    public void delete(UUID personId) {
-
+    public void delete(UUID id) {
+        repository.delete(id);
     }
 }

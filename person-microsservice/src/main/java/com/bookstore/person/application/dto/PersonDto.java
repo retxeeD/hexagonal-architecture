@@ -31,4 +31,8 @@ public class PersonDto {
         this.name = personDomain.getName();
         this.rentBook = personDomain.getRentBook();
     }
+
+    public PersonDomain toDomain(){
+        return new PersonDomain(null, document, name, rentBook);
+    }
 }
