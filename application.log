@@ -1,0 +1,133 @@
+2024-08-01 21:01:55 - Starting BookMicroserviceApplication using Java 21.0.1 with PID 7240 (E:\BookStore\book-microservice\target\classes started by pedro in E:\BookStore\book-microservice)
+2024-08-01 21:01:55 - No active profile set, falling back to 1 default profile: "default"
+2024-08-01 21:01:55 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-01 21:01:55 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-01 21:01:56 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-01 21:01:56 - Finished Spring Data repository scanning in 48 ms. Found 1 JPA repository interface.
+2024-08-01 21:01:56 - Tomcat initialized with port 8080 (http)
+2024-08-01 21:01:56 - Starting service [Tomcat]
+2024-08-01 21:01:56 - Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-08-01 21:01:57 - Initializing Spring embedded WebApplicationContext
+2024-08-01 21:01:57 - Root WebApplicationContext: initialization completed in 1389 ms
+2024-08-01 21:01:57 - HikariPool-1 - Starting...
+2024-08-01 21:01:57 - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-08-01 21:01:57 - HikariPool-1 - Start completed.
+2024-08-01 21:01:57 - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-08-01 21:01:57 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-01 21:01:57 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-01 21:01:57 - HHH000026: Second-level cache disabled
+2024-08-01 21:01:57 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-01 21:01:58 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-01 21:01:58 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 21:01:58 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-01 21:01:59 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-01 21:01:59 - LiveReload server is running on port 35729
+2024-08-01 21:01:59 - Tomcat started on port 8080 (http) with context path '/'
+2024-08-01 21:01:59 - Started BookMicroserviceApplication in 4.671 seconds (process running for 5.695)
+2024-08-01 21:02:17 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 21:02:17 - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-08-01 21:02:17 - HikariPool-1 - Shutdown initiated...
+2024-08-01 21:02:17 - HikariPool-1 - Shutdown completed.
+2024-08-01 21:02:20 - Starting BookMicroserviceApplication using Java 21.0.1 with PID 4496 (E:\BookStore\book-microservice\target\classes started by pedro in E:\BookStore\book-microservice)
+2024-08-01 21:02:20 - No active profile set, falling back to 1 default profile: "default"
+2024-08-01 21:02:20 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-01 21:02:20 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-01 21:02:21 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-01 21:02:21 - Finished Spring Data repository scanning in 45 ms. Found 1 JPA repository interface.
+2024-08-01 21:02:22 - Tomcat initialized with port 8080 (http)
+2024-08-01 21:02:22 - Starting service [Tomcat]
+2024-08-01 21:02:22 - Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-08-01 21:02:22 - Initializing Spring embedded WebApplicationContext
+2024-08-01 21:02:22 - Root WebApplicationContext: initialization completed in 1236 ms
+2024-08-01 21:02:22 - HikariPool-1 - Starting...
+2024-08-01 21:02:22 - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-08-01 21:02:22 - HikariPool-1 - Start completed.
+2024-08-01 21:02:22 - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-08-01 21:02:22 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-01 21:02:22 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-01 21:02:22 - HHH000026: Second-level cache disabled
+2024-08-01 21:02:23 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-01 21:02:24 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-01 21:02:24 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 21:02:24 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-01 21:02:25 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-01 21:02:26 - LiveReload server is running on port 35729
+2024-08-01 21:02:26 - Tomcat started on port 8080 (http) with context path '/'
+2024-08-01 21:02:26 - Started BookMicroserviceApplication in 5.691 seconds (process running for 6.719)
+2024-08-01 21:02:29 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-01 21:02:29 - Initializing Servlet 'dispatcherServlet'
+2024-08-01 21:02:29 - Completed initialization in 1 ms
+2024-08-01 21:03:02 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 21:03:02 - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-08-01 21:03:02 - HikariPool-1 - Shutdown initiated...
+2024-08-01 21:03:02 - HikariPool-1 - Shutdown completed.
+2024-08-01 21:03:05 - Starting BookMicroserviceApplication using Java 21.0.1 with PID 5840 (E:\BookStore\book-microservice\target\classes started by pedro in E:\BookStore\book-microservice)
+2024-08-01 21:03:05 - No active profile set, falling back to 1 default profile: "default"
+2024-08-01 21:03:05 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-01 21:03:05 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-01 21:03:05 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-01 21:03:05 - Finished Spring Data repository scanning in 49 ms. Found 1 JPA repository interface.
+2024-08-01 21:03:06 - Tomcat initialized with port 8080 (http)
+2024-08-01 21:03:06 - Starting service [Tomcat]
+2024-08-01 21:03:06 - Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-08-01 21:03:06 - Initializing Spring embedded WebApplicationContext
+2024-08-01 21:03:06 - Root WebApplicationContext: initialization completed in 1079 ms
+2024-08-01 21:03:06 - HikariPool-1 - Starting...
+2024-08-01 21:03:06 - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-08-01 21:03:06 - HikariPool-1 - Start completed.
+2024-08-01 21:03:06 - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-08-01 21:03:06 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-01 21:03:06 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-01 21:03:06 - HHH000026: Second-level cache disabled
+2024-08-01 21:03:07 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-01 21:03:07 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-01 21:03:07 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 21:03:08 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-01 21:03:08 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-01 21:03:08 - LiveReload server is running on port 35729
+2024-08-01 21:03:08 - Tomcat started on port 8080 (http) with context path '/'
+2024-08-01 21:03:08 - Started BookMicroserviceApplication in 3.706 seconds (process running for 4.375)
+2024-08-01 21:03:16 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-01 21:03:16 - Initializing Servlet 'dispatcherServlet'
+2024-08-01 21:03:16 - Completed initialization in 2 ms
+2024-08-01 21:03:20 - SQL Error: 23505, SQLState: 23505
+2024-08-01 21:03:20 - Unique index or primary key violation: "PUBLIC.CONSTRAINT_INDEX_1 ON PUBLIC.BOOK_ENTITY(NAME NULLS FIRST) VALUES ( /* 1 */ 'Teste l' )"; SQL statement:
+insert into book_entity (author,availability,name,id) values (?,?,?,?) [23505-224]
+2024-08-01 21:03:20 - Resolved [org.springframework.dao.DataIntegrityViolationException: could not execute statement [Unique index or primary key violation: "PUBLIC.CONSTRAINT_INDEX_1 ON PUBLIC.BOOK_ENTITY(NAME NULLS FIRST) VALUES ( /* 1 */ 'Teste l' )"; SQL statement:<EOL>insert into book_entity (author,availability,name,id) values (?,?,?,?) [23505-224]] [insert into book_entity (author,availability,name,id) values (?,?,?,?)]; SQL [insert into book_entity (author,availability,name,id) values (?,?,?,?)]; constraint [PUBLIC.CONSTRAINT_INDEX_1]]
+2024-08-01 21:03:39 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 21:03:39 - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-08-01 21:03:39 - HikariPool-1 - Shutdown initiated...
+2024-08-01 21:03:39 - HikariPool-1 - Shutdown completed.
+2024-08-01 21:03:41 - Starting BookMicroserviceApplication using Java 21.0.1 with PID 14292 (E:\BookStore\book-microservice\target\classes started by pedro in E:\BookStore\book-microservice)
+2024-08-01 21:03:41 - No active profile set, falling back to 1 default profile: "default"
+2024-08-01 21:03:41 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-01 21:03:41 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-01 21:03:41 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-01 21:03:41 - Finished Spring Data repository scanning in 46 ms. Found 1 JPA repository interface.
+2024-08-01 21:03:42 - Tomcat initialized with port 8080 (http)
+2024-08-01 21:03:42 - Starting service [Tomcat]
+2024-08-01 21:03:42 - Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-08-01 21:03:42 - Initializing Spring embedded WebApplicationContext
+2024-08-01 21:03:42 - Root WebApplicationContext: initialization completed in 1077 ms
+2024-08-01 21:03:42 - HikariPool-1 - Starting...
+2024-08-01 21:03:42 - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-08-01 21:03:42 - HikariPool-1 - Start completed.
+2024-08-01 21:03:42 - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-08-01 21:03:42 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-01 21:03:42 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-01 21:03:42 - HHH000026: Second-level cache disabled
+2024-08-01 21:03:43 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-01 21:03:43 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-01 21:03:43 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 21:03:44 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-01 21:03:44 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-01 21:03:44 - LiveReload server is running on port 35729
+2024-08-01 21:03:44 - Tomcat started on port 8080 (http) with context path '/'
+2024-08-01 21:03:44 - Started BookMicroserviceApplication in 3.751 seconds (process running for 4.427)
+2024-08-01 21:03:48 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-01 21:03:48 - Initializing Servlet 'dispatcherServlet'
+2024-08-01 21:03:48 - Completed initialization in 1 ms
+2024-08-01 21:04:38 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-01 21:04:38 - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2024-08-01 21:04:38 - HikariPool-1 - Shutdown initiated...
+2024-08-01 21:04:38 - HikariPool-1 - Shutdown completed.
